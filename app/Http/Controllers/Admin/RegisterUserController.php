@@ -53,7 +53,9 @@ class RegisterUserController extends Controller
             'phone' => $request->phone,
             'registration_token' => $reg_token,
         ]);
-        Mail::to($user)->send(new UserRegistered($user));
+        try {
+            Mail::to($user)->send(new UserRegistered($user));
+        } catch(\Exception $e) {}
         return redirect()->back();
     }
 
