@@ -36,25 +36,22 @@
 
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
-            <!-- Date of Birth -->
-            <div>
-                <x-label for="Date of Birth" :value="__('Date of Birth')" />
+            <div class="mt-4">
+                <x-label for="date_of_birth" :value="__('Date Of Birth')" />
 
-                <x-input id="Date of Birth" class="block mt-1 w-full" type="text" name="Date of Birth" :value="old('Date of Birth')" required/>
+                <x-input id="date_of_birth" class="block mt-1 w-full" type="date" name="date_of_birth" :value="old('date_of_birth')" required />
             </div>
-            <!-- Gender -->
-            <div>
-                <x-label for="Gender" :value="__('Gender')" />
+            <div class="mt-4">
+                <label for="gender" :value="__('Gender')" >
+                    <input class="mt-1" type="radio" name="gender" :value="__('Male')" /> Male
+                    <input class="mt-1" type="radio" name="gender" :value="__('Female')" /> Female
+                <label>
+            </div>
+            <div class="mt-4">
+                <x-label for="join_date" :value="__('Join Date')" />
 
-                <x-input id="Gender" class="block mt-1 w-full" type="text" name="Gender" :value="old('Gender')" required/>
+                <x-input id="join_date" class="block mt-1 w-full" type="date" name="join_date" :value="old('join_date')" required />
             </div>
-            <!-- Join Date -->
-            <div>
-                <x-label for="Join Date" :value="__('Join Date')" />
-
-                <x-input id="Join Date" class="block mt-1 w-full" type="text" name="Join Date" :value="old('Join Date')" required/>
-            </div>
-            
             <div class="flex items-center justify-end mt-4">
                 <x-button class="ml-4">
                     {{ __('Register') }}
