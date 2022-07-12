@@ -10,7 +10,8 @@
 
         <form method="POST" action="{{ route('employees.register') }}">
             @csrf
-
+            <!-- Form Name -->
+            <h2 style="text-align: center">Add New Employee</h2>
             <!-- Name -->
             <div>
                 <x-label for="first_name" :value="__('First Name')" />
@@ -35,6 +36,25 @@
 
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
+            <!-- Date of Birth -->
+            <div>
+                <x-label for="Date of Birth" :value="__('Date of Birth')" />
+
+                <x-input id="Date of Birth" class="block mt-1 w-full" type="text" name="Date of Birth" :value="old('Date of Birth')" required/>
+            </div>
+            <!-- Gender -->
+            <div>
+                <x-label for="Gender" :value="__('Gender')" />
+
+                <x-input id="Gender" class="block mt-1 w-full" type="text" name="Gender" :value="old('Gender')" required/>
+            </div>
+            <!-- Join Date -->
+            <div>
+                <x-label for="Join Date" :value="__('Join Date')" />
+
+                <x-input id="Join Date" class="block mt-1 w-full" type="text" name="Join Date" :value="old('Join Date')" required/>
+            </div>
+            
             <div class="flex items-center justify-end mt-4">
                 <x-button class="ml-4">
                     {{ __('Register') }}
