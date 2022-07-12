@@ -51,6 +51,9 @@ class RegisterUserController extends Controller
             'last_name' => $request->last_name,
             'email' => $request->email,
             'phone' => $request->phone,
+            'date_of_birth' => $request->date_of_birth,
+            'gender' => $request->gender,
+            "join_date" => $request->join_date,
             'registration_token' => $reg_token,
         ]);
         try {

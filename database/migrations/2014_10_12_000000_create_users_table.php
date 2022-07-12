@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('phone');
             $table->string('registration_token')->nullable();
             $table->boolean('is_admin')->default(false);
+            $table->string('gender')->nullable();
+            $table->timestamp('date_of_birth')->useCurrent();
+            $table->timestamp('join_date')->useCurrent();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
