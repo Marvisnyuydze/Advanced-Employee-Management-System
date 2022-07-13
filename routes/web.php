@@ -26,6 +26,7 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->prefix('/work')->group(function () {
     Route::get('/logs/create', [WorkLogController::class, 'create'])->middleware(['auth'])->name('work_logs.create');
     Route::post('/logs', [WorkLogController::class, 'store'])->middleware(['auth'])->name('work_logs.store');
+    Route::get('/logs', [WorkLogController::class, 'index'])->middleware(['auth'])->name('work_logs.index');
 });
 
 
@@ -36,6 +37,10 @@ Route::middleware('admin.verified')->group(function () {
     Route::post('employees/register', [RegisterUserController::class, 'store']);
     Route::get('employees', [EmployeesController::class, 'index'])
         ->name('employees.index');
+    Route::get('/employees/{id}/logs', [EmployeesController::class, 'viewOpenLogs'])
+        ->name('employees.open_logs');
+    Route::post('/employees/logs/{id}', [EmployeesController::class, 'updateLog'])
+        ->name('employees.update_log');    
 });
 
 require __DIR__.'/auth.php';

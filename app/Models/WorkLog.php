@@ -13,4 +13,8 @@ class WorkLog extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function supervisor()
+    {
+        return $this->belongsTo(User::class, 'supervised_by');
+    }
 }

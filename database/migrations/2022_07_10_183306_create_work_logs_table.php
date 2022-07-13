@@ -19,10 +19,14 @@ return new class extends Migration
             $table->string('slug')->nullable();
             $table->string('name');
             $table->string('description');
+            $table->boolean('status')->nullable();
+            $table->string('comments')->nullable();
+            $table->foreignId('supervised_by')->nullable();
             $table->integer('duration_in_seconds')->default(3600);
             $table->timestamp('starts_at')->useCurrent();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('supervised_by')->references('id')->on('users');
         });
     }
 
