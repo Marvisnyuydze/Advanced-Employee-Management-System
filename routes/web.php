@@ -26,6 +26,7 @@ Route::get('/dashboard', function () {
 Route::middleware('auth')->prefix('/work')->group(function () {
     Route::get('/logs/create', [WorkLogController::class, 'create'])->middleware(['auth'])->name('work_logs.create');
     Route::post('/logs', [WorkLogController::class, 'store'])->middleware(['auth'])->name('work_logs.store');
+    Route::get('/logs', [WorkLogController::class, 'index'])->middleware(['auth'])->name('work_logs.index');
 });
 
 

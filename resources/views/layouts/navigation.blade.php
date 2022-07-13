@@ -15,6 +15,9 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('work_logs.index')" :active="request()->routeIs('work_logs.index')">
+                        {{ __('Work Logs') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('work_logs.create')" :active="request()->routeIs('work_logs.create')">
                         {{ __('Log your hours') }}
                     </x-nav-link>
@@ -68,6 +71,9 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('work_logs.index')" :active="request()->routeIs('work_logs.index')">
+                {{ __('Work Logs') }}
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('work_logs.create')" :active="request()->routeIs('work_logs.create')">
                 {{ __('Log your hours') }}

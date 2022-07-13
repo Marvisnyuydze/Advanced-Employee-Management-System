@@ -15,7 +15,8 @@ class WorkLogController extends Controller
      */
     public function index()
     {
-        //
+        $logs = WorkLog::where('user_id', Auth::user()->id)->orderBy('created_at')->paginate(25);
+        return view('work-logs.index', ['logs' => $logs]);
     }
 
     /**
@@ -47,7 +48,7 @@ class WorkLogController extends Controller
             $log = WorkLog::create([
                 'name' => $request->name,
                 'description' => $request->description,
-                'duration' => $duration,
+                'duration_in_seconds' => $duration,
                 'phone' => $request->phone,
                 'starts_at' => $request->starts_at,
                 'user_id' => Auth::user()->id,
@@ -56,7 +57,7 @@ class WorkLogController extends Controller
             
         }
         
-        return redirect()->back();
+        return redirect()->route('work_logs.index');
     }
 
     /**
