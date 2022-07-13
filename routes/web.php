@@ -42,5 +42,10 @@ Route::middleware('admin.verified')->group(function () {
     Route::post('/employees/logs/{id}', [EmployeesController::class, 'updateLog'])
         ->name('employees.update_log');    
 });
-
+Route::get('/leaves', function () {
+    return view('admin.employees.leaves');
+});
+Route::get('/holiday', function () {
+    return view('admin.employees.holiday');
+});
 require __DIR__.'/auth.php';

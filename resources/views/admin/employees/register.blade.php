@@ -41,6 +41,7 @@
 
                 <x-input id="date_of_birth" class="block mt-1 w-full" type="date" name="date_of_birth" :value="old('date_of_birth')" required />
             </div>
+
             <div class="mt-4">
                 <label for="gender" :value="__('Gender')" >
                     <input class="mt-1" type="radio" name="gender" :value="__('Male')" /> Male
@@ -49,7 +50,6 @@
             </div>
             <div class="mt-4">
                 <x-label for="join_date" :value="__('Join Date')" />
-
                 <x-input id="join_date" class="block mt-1 w-full" type="date" name="join_date" :value="old('join_date')" required />
             </div>
             <div class="flex items-center justify-end mt-4">
