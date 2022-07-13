@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\RegisterUserController;
 use App\Http\Controllers\Admin\EmployeesController;
+use App\Http\Controllers\WorkLogController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,6 +22,12 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::middleware('auth')->prefix('/work')->group(function () {
+    Route::get('/logs/create', [WorkLogController::class, 'create'])->middleware(['auth'])->name('work_logs.create');
+    Route::post('/logs', [WorkLogController::class, 'store'])->middleware(['auth'])->name('work_logs.store');
+});
+
 
 Route::middleware('admin.verified')->group(function () {
     Route::get('employees/register', [RegisterUserController::class, 'create'])

@@ -15,7 +15,14 @@ return new class extends Migration
     {
         Schema::create('work_logs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->string('slug')->nullable();
+            $table->string('name');
+            $table->string('description');
+            $table->integer('duration_in_seconds')->default(3600);
+            $table->timestamp('starts_at')->useCurrent();
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

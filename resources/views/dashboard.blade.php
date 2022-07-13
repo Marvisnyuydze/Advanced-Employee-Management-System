@@ -1,4 +1,7 @@
 <x-app-layout>
+    @if(Auth::user()->is_admin)
+        @include('layouts.top-navigation')
+    @endif
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
