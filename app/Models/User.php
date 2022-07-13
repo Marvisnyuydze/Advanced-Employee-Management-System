@@ -41,6 +41,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(WorkLog::class);
     }
+    public function openLogs()
+    {
+        return $this->hasMany(WorkLog::class)->where('status', null);
+    }
     public function supervisedLogs()
     {
         return $this->hasMany(WorkLog::class, 'supervised_by');

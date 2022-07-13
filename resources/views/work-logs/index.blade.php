@@ -25,7 +25,7 @@
                                 <td>{{ $log->description }}</td>
                                 <td>{{ $log->starts_at }}</td>
                                 <td>{{ \number_format($log->duration_in_seconds / 3600, 2) }} h</td>
-                                <td>{{ $log->status }}</td>
+                                <td>{{ $log->status ? 'Approved' : ($log->status == null ? '' : 'Rejected') }}</td>
                                 <td>{{ $log->comments }}</td>
                                 <td>{{ $log->supervisor !== null ? $log->supervisor->first_name." ".$log->supervisor->last_name : 'Not reviewed' }}</td>
                             </tr>

@@ -15,7 +15,7 @@ class WorkLogController extends Controller
      */
     public function index()
     {
-        $logs = WorkLog::where('user_id', Auth::user()->id)->orderBy('created_at')->paginate(25);
+        $logs = WorkLog::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(25);
         return view('work-logs.index', ['logs' => $logs]);
     }
 

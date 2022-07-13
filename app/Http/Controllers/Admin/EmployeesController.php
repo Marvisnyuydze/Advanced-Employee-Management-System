@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\WorkLog;
 
 class EmployeesController extends Controller
 {
@@ -51,6 +53,22 @@ class EmployeesController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function viewOpenLogs($id)
+    {
+        $user = User::find($id);
+        if ($user !== null) {
+            $logs = WorkLog::where('user_id', $user->id)->where('status', null)->orderBy('created_at', 'desc')->paginate(25);
+            return view('admin.work-logs.index', ['logs' => $logs, 'user' => $user]);
+        }
+        return redirect()->back();
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -68,9 +86,19 @@ class EmployeesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateLog(Request $request, $id)
     {
-        //
+        $log = WorkLog::find($id);
+        //dd($log, $request->all());
+        if ($log !== null) {
+            if($request->approve !== null) {
+                $log->status = $request->approve == 'yes' ? 1 : 0;
+            }
+            $log->comments = $request->comments;
+            $log->supervised_by = Auth::user()->id;
+            $log->save();
+        }
+        return redirect()->back();
     }
 
     /**

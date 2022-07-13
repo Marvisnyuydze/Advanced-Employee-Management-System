@@ -14,6 +14,7 @@
                             <th>Phone</th>
                             <th>Date of Birth</th>
                             <th>Join Date</th>
+                            <th>Open Logs</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -24,6 +25,11 @@
                                 <td>{{ $user->phone }}</td>
                                 <td>{{ $user->date_of_birth }}</td>
                                 <td>{{ $user->join_date }}</td>
+                                <td>
+                                    <a href="{{route('employees.open_logs', ['id' => $user->id])}}">
+                                        <span style="display: inline-block; text-align: center; border-radius: 10px;min-width: 90px; width: 100%; text-decoration: underline; color: #fff; background: #ec3;">{{ count($user->openLogs) }}</span>
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>
