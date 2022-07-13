@@ -38,7 +38,7 @@
             @endif
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                <h1>Welcome to {{ config('app.name', 'HIPE_AEMS') }}</h1>
+                <h1>Welcome to AEMS</h1>
                 <img src="{{asset('hipe.jpg')}}" />
             </div>
         </div>
