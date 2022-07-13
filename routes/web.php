@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\RegisterUserController;
+use App\Http\Controllers\Admin\EmployeesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -26,6 +27,8 @@ Route::middleware('admin.verified')->group(function () {
                 ->name('employees.register');
 
     Route::post('employees/register', [RegisterUserController::class, 'store']);
+    Route::get('employees', [EmployeesController::class, 'index'])
+        ->name('employees.index');
 });
 
 require __DIR__.'/auth.php';
